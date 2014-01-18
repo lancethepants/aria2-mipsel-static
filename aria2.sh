@@ -63,8 +63,10 @@ EOF
 patch < openssl.patch
 
 ./Configure linux-mipsel \
--ffunction-sections -fdata-sections  -Wl,--gc-sections \
---prefix=/jffs shared no-zlib
+-ffunction-sections -fdata-sections -Wl,--gc-sections \
+--prefix=/opt shared zlib \
+--with-zlib-lib=$DEST/lib \
+--with-zlib-include=$DEST/include
 
 make CC=mipsel-linux-gcc AR="mipsel-linux-ar r" RANLIB=mipsel-linux-ranlib
 make install CC=mipsel-linux-gcc AR="mipsel-linux-ar r" RANLIB=mipsel-linux-ranlib INSTALLTOP=$DEST OPENSSLDIR=$DEST/ssl
