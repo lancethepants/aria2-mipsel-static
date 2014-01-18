@@ -11,7 +11,7 @@ WGET="wget --prefer-family=IPv4"
 RPATH=/opt/lib
 DEST=$BASE/opt
 LDFLAGS="-L$DEST/lib -Wl,--gc-sections"
-CPPFLAGS="-I$DEST/include -I$DEST/include/ncurses"
+CPPFLAGS="-I$DEST/include"
 CFLAGS="-mtune=mips32 -mips32 -O3 -ffunction-sections -fdata-sections"	
 CXXFLAGS=$CFLAGS
 CONFIGURE="./configure --prefix=/opt --host=mipsel-linux"
