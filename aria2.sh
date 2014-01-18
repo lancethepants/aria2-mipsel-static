@@ -161,3 +161,5 @@ ARIA2_STATIC=yes
 
 $MAKE \
 LIBS="-static -lz -lssl -lcrypto -lsqlite3 -lxml2 -lcares"
+
+make install DESTDIR=$BASE/aria2
