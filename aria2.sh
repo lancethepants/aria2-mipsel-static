@@ -76,9 +76,9 @@ make install CC=mipsel-linux-gcc AR="mipsel-linux-ar r" RANLIB=mipsel-linux-ranl
 ########## ##################################################################
 
 mkdir $SRC/sqlite && cd $SRC/sqlite
-$WGET http://www.sqlite.org/2013/sqlite-autoconf-3080200.tar.gz
-tar zxvf sqlite-autoconf-3080200.tar.gz
-cd sqlite-autoconf-3080200
+$WGET https://sqlite.org/2014/sqlite-autoconf-3080401.tar.gz
+tar zxvf sqlite-autoconf-3080401.tar.gz
+cd sqlite-autoconf-3080401
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -131,9 +131,9 @@ make install DESTDIR=$BASE
 ######### ###################################################################
 
 mkdir $SRC/aria2 && cd $SRC/aria2
-$WGET http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.3/aria2-1.18.3.tar.gz
-tar zxvf aria2-1.18.3.tar.gz
-cd aria2-1.18.3
+$WGET http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.4/aria2-1.18.4.tar.gz
+tar zxvf aria2-1.18.4.tar.gz
+cd aria2-1.18.4
 
 LDFLAGS="-zmuldefs $LDFLAGS" \
 CPPFLAGS=$CPPFLAGS \
