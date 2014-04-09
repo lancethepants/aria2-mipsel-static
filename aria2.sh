@@ -76,7 +76,7 @@ make install CC=mipsel-linux-gcc AR="mipsel-linux-ar r" RANLIB=mipsel-linux-ranl
 ########## ##################################################################
 
 mkdir $SRC/sqlite && cd $SRC/sqlite
-$WGET https://sqlite.org/2014/sqlite-autoconf-3080403.tar.gz
+$WGET http://sqlite.org/2014/sqlite-autoconf-3080403.tar.gz
 tar zxvf sqlite-autoconf-3080403.tar.gz
 cd sqlite-autoconf-3080403
 
