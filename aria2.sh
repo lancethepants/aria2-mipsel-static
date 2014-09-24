@@ -131,9 +131,9 @@ make install DESTDIR=$BASE
 ######### ###################################################################
 
 mkdir $SRC/aria2 && cd $SRC/aria2
-$WGET http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.7/aria2-1.18.7.tar.gz
-tar zxvf aria2-1.18.7.tar.gz
-cd aria2-1.18.7
+$WGET http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.8/aria2-1.18.8.tar.gz
+tar zxvf aria2-1.18.8.tar.gz
+cd aria2-1.18.8
 
 LDFLAGS="-zmuldefs $LDFLAGS" \
 CPPFLAGS=$CPPFLAGS \
