@@ -43,9 +43,9 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir -p $SRC/openssl && cd $SRC/openssl
-$WGET http://www.openssl.org/source/openssl-1.0.1i.tar.gz
-tar zxvf openssl-1.0.1i.tar.gz
-cd openssl-1.0.1i
+$WGET http://www.openssl.org/source/openssl-1.0.1j.tar.gz
+tar zxvf openssl-1.0.1j.tar.gz
+cd openssl-1.0.1j
 
 cat << "EOF" > openssl.patch
 --- Configure_orig      2013-11-19 11:32:38.755265691 -0700
@@ -76,9 +76,9 @@ make install CC=mipsel-linux-gcc AR="mipsel-linux-ar r" RANLIB=mipsel-linux-ranl
 ########## ##################################################################
 
 mkdir $SRC/sqlite && cd $SRC/sqlite
-$WGET http://sqlite.org/2014/sqlite-autoconf-3080600.tar.gz
-tar zxvf sqlite-autoconf-3080600.tar.gz
-cd sqlite-autoconf-3080600
+$WGET http://sqlite.org/2014/sqlite-autoconf-3080700.tar.gz
+tar zxvf sqlite-autoconf-3080700.tar.gz
+cd sqlite-autoconf-3080700
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -94,18 +94,19 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir $SRC/libxml2 && cd $SRC/libxml2
-$WGET ftp://xmlsoft.org/libxml2/libxml2-2.9.1.tar.gz
-tar zxvf libxml2-2.9.1.tar.gz
-cd libxml2-2.9.1
+$WGET ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
+tar zxvf libxml2-2.9.2.tar.gz
+cd libxml2-2.9.2
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
 CFLAGS=$CFLAGS \
 CXXFLAGS=$CXXFLAGS \
 $CONFIGURE \
+--with-zlib=$DEST \
 --without-python
 
-$MAKE
+$MAKE LIBS="-lz"
 make install DESTDIR=$BASE
 
 ########## ##################################################################
