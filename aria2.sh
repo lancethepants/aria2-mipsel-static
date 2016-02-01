@@ -5,16 +5,17 @@ set -x
 
 mkdir ~/aria2 && cd ~/aria2
 
+PREFIX=/opt
+
 BASE=`pwd`
 SRC=$BASE/src
 WGET="wget --prefer-family=IPv4"
-RPATH=/opt/lib
-DEST=$BASE/opt
+DEST=$BASE$PREFIX
 LDFLAGS="-L$DEST/lib -Wl,--gc-sections"
 CPPFLAGS="-I$DEST/include"
 CFLAGS="-mtune=mips32 -mips32 -O3 -ffunction-sections -fdata-sections"	
 CXXFLAGS=$CFLAGS
-CONFIGURE="./configure --prefix=/opt --host=mipsel-linux"
+CONFIGURE="./configure --prefix=$PREFIX --host=mipsel-linux"
 MAKE="make -j`nproc`"
 mkdir $SRC
 
@@ -33,7 +34,7 @@ CFLAGS=$CFLAGS \
 CXXFLAGS=$CXXFLAGS \
 CROSS_PREFIX=mipsel-linux- \
 ./configure \
---prefix=/opt
+--prefix=$PREFIX
 
 $MAKE
 make install DESTDIR=$BASE
@@ -43,14 +44,14 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir -p $SRC/openssl && cd $SRC/openssl
-$WGET https://www.openssl.org/source/openssl-1.0.2a.tar.gz
-tar zxvf openssl-1.0.2a.tar.gz
-cd openssl-1.0.2a
+$WGET https://www.openssl.org/source/openssl-1.0.2f.tar.gz
+tar zxvf openssl-1.0.2f.tar.gz
+cd openssl-1.0.2f
 
 ./Configure linux-mips32 \
 -mtune=mips32 -mips32 \
 -ffunction-sections -fdata-sections -Wl,--gc-sections \
---prefix=/opt shared zlib \
+--prefix=$PREFIX shared zlib \
 --with-zlib-lib=$DEST/lib \
 --with-zlib-include=$DEST/include
 
@@ -62,9 +63,9 @@ make CC=mipsel-linux-gcc install INSTALLTOP=$DEST OPENSSLDIR=$DEST/ssl
 ########## ##################################################################
 
 mkdir $SRC/sqlite && cd $SRC/sqlite
-$WGET https://www.sqlite.org/2015/sqlite-autoconf-3081002.tar.gz --no-check-certificate
-tar zxvf sqlite-autoconf-3081002.tar.gz
-cd sqlite-autoconf-3081002
+$WGET https://www.sqlite.org/2016/sqlite-autoconf-3100200.tar.gz --no-check-certificate
+tar zxvf sqlite-autoconf-3100200.tar.gz
+cd sqlite-autoconf-3100200
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -72,7 +73,7 @@ CFLAGS=$CFLAGS \
 CXXFLAGS=$CXXFLAGS \
 $CONFIGURE
 
-$MAKE
+make
 make install DESTDIR=$BASE
 
 ########### #################################################################
@@ -118,9 +119,9 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir $SRC/libssh2 && cd $SRC/libssh2
-$WGET http://www.libssh2.org/download/libssh2-1.5.0.tar.gz
-tar zxvf libssh2-1.5.0.tar.gz
-cd libssh2-1.5.0
+$WGET http://www.libssh2.org/download/libssh2-1.6.0.tar.gz
+tar zxvf libssh2-1.6.0.tar.gz
+cd libssh2-1.6.0
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -136,9 +137,9 @@ make install DESTDIR=$BASE
 ######### ###################################################################
 
 mkdir $SRC/aria2 && cd $SRC/aria2
-$WGET http://sourceforge.net/projects/aria2/files/stable/aria2-1.19.0/aria2-1.19.0.tar.gz
-tar zxvf aria2-1.19.0.tar.gz
-cd aria2-1.19.0
+$WGET https://github.com/tatsuhiro-t/aria2/releases/download/release-1.19.3/aria2-1.19.3.tar.gz
+tar zxvf aria2-1.19.3.tar.gz
+cd aria2-1.19.3
 
 LDFLAGS="-zmuldefs $LDFLAGS" \
 CPPFLAGS=$CPPFLAGS \
@@ -169,5 +170,4 @@ LIBSSH2_LIBS="-L$DEST/lib" \
 ARIA2_STATIC=yes
 
 $MAKE LIBS="-lz -lssl -lcrypto -lsqlite3 -lcares -lxml2 -lssh2"
-
 make install DESTDIR=$BASE/aria2
