@@ -44,9 +44,9 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir -p $SRC/openssl && cd $SRC/openssl
-$WGET https://www.openssl.org/source/openssl-1.0.2f.tar.gz
-tar zxvf openssl-1.0.2f.tar.gz
-cd openssl-1.0.2f
+$WGET https://www.openssl.org/source/openssl-1.0.2g.tar.gz
+tar zxvf openssl-1.0.2g.tar.gz
+cd openssl-1.0.2g
 
 ./Configure linux-mips32 \
 -mtune=mips32 -mips32 \
@@ -63,9 +63,9 @@ make CC=mipsel-linux-gcc install INSTALLTOP=$DEST OPENSSLDIR=$DEST/ssl
 ########## ##################################################################
 
 mkdir $SRC/sqlite && cd $SRC/sqlite
-$WGET https://www.sqlite.org/2016/sqlite-autoconf-3100200.tar.gz --no-check-certificate
-tar zxvf sqlite-autoconf-3100200.tar.gz
-cd sqlite-autoconf-3100200
+$WGET https://www.sqlite.org/2016/sqlite-autoconf-3120100.tar.gz --no-check-certificate
+tar zxvf sqlite-autoconf-3120100.tar.gz
+cd sqlite-autoconf-3120100
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -81,9 +81,9 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir $SRC/libxml2 && cd $SRC/libxml2
-$WGET ftp://xmlsoft.org/libxml2/libxml2-2.9.2.tar.gz
-tar zxvf libxml2-2.9.2.tar.gz
-cd libxml2-2.9.2
+$WGET ftp://xmlsoft.org/libxml2/libxml2-2.9.3.tar.gz
+tar zxvf libxml2-2.9.3.tar.gz
+cd libxml2-2.9.3
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -101,9 +101,9 @@ make install DESTDIR=$BASE
 ########## ##################################################################
 
 mkdir $SRC/c-ares && cd $SRC/c-ares
-$WGET http://c-ares.haxx.se/download/c-ares-1.10.0.tar.gz
-tar zxvf c-ares-1.10.0.tar.gz
-cd c-ares-1.10.0
+$WGET http://c-ares.haxx.se/download/c-ares-1.11.0.tar.gz
+tar zxvf c-ares-1.11.0.tar.gz
+cd c-ares-1.11.0
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -119,9 +119,9 @@ make install DESTDIR=$BASE
 ########### #################################################################
 
 mkdir $SRC/libssh2 && cd $SRC/libssh2
-$WGET http://www.libssh2.org/download/libssh2-1.6.0.tar.gz
-tar zxvf libssh2-1.6.0.tar.gz
-cd libssh2-1.6.0
+$WGET http://www.libssh2.org/download/libssh2-1.7.0.tar.gz
+tar zxvf libssh2-1.7.0.tar.gz
+cd libssh2-1.7.0
 
 LDFLAGS=$LDFLAGS \
 CPPFLAGS=$CPPFLAGS \
@@ -137,9 +137,9 @@ make install DESTDIR=$BASE
 ######### ###################################################################
 
 mkdir $SRC/aria2 && cd $SRC/aria2
-$WGET https://github.com/tatsuhiro-t/aria2/releases/download/release-1.19.3/aria2-1.19.3.tar.gz
-tar zxvf aria2-1.19.3.tar.gz
-cd aria2-1.19.3
+$WGET https://github.com/tatsuhiro-t/aria2/releases/download/release-1.21.0/aria2-1.21.0.tar.gz
+tar zxvf aria2-1.21.0.tar.gz
+cd aria2-1.21.0
 
 LDFLAGS="-zmuldefs $LDFLAGS" \
 CPPFLAGS=$CPPFLAGS \
